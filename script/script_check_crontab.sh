@@ -7,7 +7,7 @@ then
 	if [ $? -ne 0 ]
 	then
 		echo 'file /etc/crontab was modified' | sendmail root
-		md5sum /etc/crontab >> /root/crontab_hashed
+		md5sum /etc/crontab > /root/crontab_hashed
 	fi
 else
 	md5sum /etc/crontab > /root/crontab_hashed
