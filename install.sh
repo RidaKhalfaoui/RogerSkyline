@@ -101,9 +101,11 @@ echo "$_GREEN   ================================================================
 sed -i -e 's/'"127.0.0.1	localhost"'/'"127.0.0.1	localhost.localdomain localhost debianTEST"'/g' /etc/hosts
 
 echo "$_RED   =====================================================================$_RESET\n"
-echo "$_BLUE                           $_RESET"
+echo "$_BLUE                         edit files rules  $_RESET"
 echo "$_GREEN   =====================================================================$_RESET\n"
 
+cp /root/roger/files/rules.v4 /etc/iptables/rules.v4
+cp /root/roger/files/rules.v6 /etc/iptables/rules.v6
 
 
 
