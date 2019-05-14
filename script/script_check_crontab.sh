@@ -6,7 +6,7 @@ then
 	diff -q /tmp/crontab_check /root/crontab_hashed
 	if [ $? -ne 0 ]
 	then
-		echo 'file /etc/crontab was modified' | senmail root
+		echo 'file /etc/crontab was modified' | sendmail root
 		md5sum /etc/crontab >> /root/crontab_hashed
 	fi
 else
