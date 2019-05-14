@@ -63,7 +63,7 @@ echo "$_RED   ==================================================================
 echo "$_BLUE                        Subtitute file crontab$_RESET"
 echo "$_GREEN   =====================================================================$_RESET\n"
 cp /etc/crontab /etc/crontab-saved
-echo "SHELL=/bin.sh\n" > /etc/crontab
+echo "SHELL=/bin/sh\n" > /etc/crontab
 echo "PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\n" >> /etc/crontab
 echo "# m h dom mon dow user command\n" >> /etc/crontab
 echo "17 * * * * root cd / && run-parts --report /etc/cron.hourly\n" >> /etc/crontab
@@ -71,9 +71,13 @@ echo "25 6 * * * root test -x /usr/sbin/anacron || ( cd / && run-parts --report 
 echo "47 6 * * 7 root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )\n" >> /etc/crontab
 echo "52 6 1 * * root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )\n" >> /etc/crontab
 
-echo "0 4 0 0 1 root /bin/sh /root/script_update_sys.sh\n" >> /etc/crontab
-echo "*/1 * * * * root /bin/sh /root/script_check_crontab.sh\n" >> /etc/crontab
+echo "0 4 * * 1 root /bin/sh /root/script_update_sys.sh\n" >> /etc/crontab
+echo "* * * * * root /bin/sh /root/script_check_crontab.sh\n" >> /etc/crontab
 echo "@reboot root /bin/sh /root/script_update_sys.sh\n" >> /etc/crontab
+
+#echo "0 4 * * 1 sudo /bin/sh /root/script_update_sys.sh\n" > /var/spool/cron/crontabs/root
+#echo "@reboot sudo /bin/sh /root/script_update_sys.sh\n" >> /var/spool/cron/crontabs/root
+#echo "*/1 * * * * sudo /bin/sh /root/script_check_crontab.sh\n" >> /var/spool/cron/crontabs/root
 echo "#" >> /etc/crontab
 
 
@@ -96,8 +100,9 @@ echo "$_BLUE                          Sed file hosts$_RESET"
 echo "$_GREEN   =====================================================================$_RESET\n"
 sed -i -e 's/'"127.0.0.1	localhost"'/'"127.0.0.1	localhost.localdomain localhost debianTEST"'/g' /etc/hosts
 
-
-
+echo "$_RED   =====================================================================$_RESET\n"
+echo "$_BLUE                           $_RESET"
+echo "$_GREEN   =====================================================================$_RESET\n"
 
 
 
