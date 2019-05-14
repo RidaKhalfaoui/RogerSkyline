@@ -1,6 +1,6 @@
 #!/bin/bah
 
-if [ -e /root/crontab_save_check ]
+if [ -e /root/crontab_hashed ]
 then
 	md5sum /etc/crontab > /tmp/crontab_check
 	diff -q /tmp/crontab_check /root/crontab_hashed
